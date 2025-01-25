@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación Práctica - Muestreo No Probabilístico</title>
+<style>
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eceff1;
+    color: #263238;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #4a148c; /* Morado oscuro */
+    color: white;
+    padding: 2em 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+     transition: background-color 0.3s ease;
+}
+header:hover{
+    background-color: #311b92;
+}
+
+main {
+    padding: 20px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 900px;
+     transition: transform 0.3s ease;
+}
+main:hover{
+    transform: scale(1.02);
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 25px;
+    border: 1px solid #9fa8da;
+    border-radius: 5px;
+    background-color: #fff;
+     transition: box-shadow 0.3s ease;
+}
+section:hover{
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #4a148c;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #c5cae9;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.listado-encuesta {
+    list-style-type: none;
+    padding: 0;
+}
+
+.listado-encuesta li {
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #c5cae9;
+     transition: background-color 0.3s ease-in-out,  transform 0.3s ease-in-out ;
+}
+.listado-encuesta li:hover {
+     background-color: #f2f2f2;
+   transform: translateX(5px);
+}
+
+.tipo-pregunta {
+    font-style: italic;
+    color: #546e7a;
+    margin-left: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+table, th, td {
+    border: 1px solid #9fa8da;
+    padding: 12px;
+    text-align: left;
+    transition: background-color 0.3s ease-in-out;
+}
+
+th {
+    background-color: #e8eaf6;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #e0e0e0;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5em 0;
+    background-color: #4a148c;
+    color: white;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to right, transparent, #311b92, transparent);
+    animation: slideBorder 5s linear infinite;
+}
+@keyframes slideBorder {
+    from { transform: translateX(-100%);}
+    to {transform: translateX(100%);}
+}
+.evidencia{
+    margin-top: 15px;
+     padding: 15px;
+    border: 1px solid #9fa8da;
+    border-radius: 5px;
+    background-color: #e8eaf6;
+     transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    text-align: center;
+}
+
+.evidencia:hover {
+  background-color: #d0d1e1;
+    transform: scale(1.01);
+}
+
+.evidencia p {
+    margin: 0;
+}
+
+</style>    
+
+</head>
+<body>
+    <header>
+        <h1>Evaluación Práctica: Muestreo No Probabilístico en Informática</h1>
+        <p>Universidad: Universidad Politécnica Territorial De Falcón Alonso Gamero</p>
+
+        <p>Materia: Estadística Aplicada a la Informática</p>
+    </header>
+
+    <main>
+        <section id="problema">
+            <h2>Situación Problema: Usabilidad de IDEs para Desarrollo de Software</h2>
+            <p>La elección de un IDE (Entorno de Desarrollo Integrado) impacta significativamente la productividad y experiencia de los desarrolladores. Esta evaluación explora la problemática de la usabilidad de diferentes IDEs, aplicando métodos de muestreo no probabilístico.</p>
+        </section>
+
+        <section id="muestreo-accidental">
+            <h2>Muestreo Accidental o Causal</h2>
+            <p><strong>Descripción:</strong> Se recolectó información a través de una encuesta en línea, compartida en comunidades de desarrollo, foros y grupos de redes sociales de programadores.</p>
+            <h3>Encuesta (Modelo)</h3>
+            <ul class="listado-encuesta">
+                 <li>
+                    <strong>Pregunta 1:</strong> ¿Qué lenguaje de programación usas con mayor frecuencia?
+                    <span class="tipo-pregunta">(Texto Abierto)</span>
+                </li>
+                <li>
+                    <strong>Pregunta 2:</strong> ¿Cuál es tu IDE principal para desarrollar en ese lenguaje?
+                    <span class="tipo-pregunta">(Texto Abierto)</span>
+                </li>
+                <li>
+                    <strong>Pregunta 3:</strong> En una escala del 1 al 5, ¿qué tan satisfecho estás con la usabilidad de tu IDE principal?
+                    <span class="tipo-pregunta">(Escala del 1 al 5)</span>
+                </li>
+                <li>
+                     <strong>Pregunta 4:</strong> ¿Qué aspectos de tu IDE te parecen más complicados o frustrantes?
+                    <span class="tipo-pregunta">(Texto Abierto)</span>
+                </li>
+                  <li>
+                    <strong>Pregunta 5:</strong> ¿Considerarías cambiar a otro IDE por mejorar la usabilidad?
+                    <span class="tipo-pregunta">(Sí/No)</span>
+                </li>
+            </ul>
+            <h3>Resultados (Ejemplo)</h3>
+             <table>
+                    <thead>
+                        <tr>
+                            <th>Pregunta</th>
+                            <th>Respuesta</th>
+                             <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <tr>
+                            <td>Lenguaje Principal</td>
+                            <td>Python</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>Lenguaje Principal</td>
+                            <td>JavaScript</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>Lenguaje Principal</td>
+                            <td>Java</td>
+                            <td>10</td>
+                        </tr>
+                         <tr>
+                            <td>Lenguaje Principal</td>
+                            <td>C#</td>
+                             <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>IDE Principal(Python)</td>
+                            <td>VS Code</td>
+                            <td>10</td>
+                         </tr>
+                           <tr>
+                            <td>IDE Principal(Python)</td>
+                             <td>PyCharm</td>
+                            <td>8</td>
+                         </tr>
+                        <tr>
+                            <td>IDE Principal(JavaScript)</td>
+                            <td>VS Code</td>
+                            <td>10</td>
+                         </tr>
+                            <tr>
+                            <td>IDE Principal(JavaScript)</td>
+                            <td>WebStorm</td>
+                             <td>2</td>
+                         </tr>
+                            <tr>
+                            <td>IDE Principal(Java)</td>
+                             <td>IntelliJ IDEA</td>
+                             <td>8</td>
+                         </tr>
+                            <tr>
+                             <td>IDE Principal(Java)</td>
+                             <td>Eclipse</td>
+                             <td>2</td>
+                        </tr>
+                         <tr>
+                            <td>Nivel de satisfacción con el IDE(Promedio)</td>
+                             <td>(3.5)</td>
+                             <td>45</td>
+                         </tr>
+                            <tr>
+                            <td>Cambiar de IDE</td>
+                            <td>Sí</td>
+                            <td>20</td>
+                         </tr>
+                           <tr>
+                             <td>Cambiar de IDE</td>
+                             <td>No</td>
+                             <td>25</td>
+                         </tr>
+                    </tbody>
+                </table>
+
+             </div>
+        </section>
+
+        <section id="muestreo-cuotas">
+            <h2>Muestreo por Cuotas</h2>
+            <p><strong>Descripción:</strong> Se buscó encuestar a un número similar de desarrolladores con diferentes niveles de experiencia (junior, mid-level y senior) para entender si la usabilidad de los IDEs varía según la experiencia.</p>
+            <h3>Encuesta (Modelo)</h3>
+            <ul class="listado-encuesta">
+                 <li>
+                    <strong>Pregunta 1:</strong> ¿Cuál es tu nivel de experiencia en desarrollo de software?
+                    <span class="tipo-pregunta">(Junior/Mid-level/Senior)</span>
+                </li>
+                <li>
+                    <strong>Pregunta 2:</strong> ¿Qué tipo de proyectos desarrollas principalmente?
+                     <span class="tipo-pregunta">(Web/Móvil/Escritorio/Otro)</span>
+                </li>
+                <li>
+                     <strong>Pregunta 3:</strong> ¿Qué tan importante es para ti la personalización de tu IDE?
+                      <span class="tipo-pregunta">(Escala del 1 al 5)</span>
+                </li>
+                 <li>
+                    <strong>Pregunta 4:</strong> ¿Consideras que las herramientas de depuración en tu IDE son fáciles de usar?
+                     <span class="tipo-pregunta">(Sí/No)</span>
+                </li>
+                <li>
+                    <strong>Pregunta 5:</strong> ¿Has tenido problemas con la velocidad de tu IDE al trabajar con proyectos grandes?
+                    <span class="tipo-pregunta">(Sí/No)</span>
+                </li>
+            </ul>
+            <h3>Resultados (Ejemplo)</h3>
+              <table>
+                    <thead>
+                        <tr>
+                           <th>Pregunta</th>
+                           <th>Respuesta</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <tr>
+                             <td>Nivel de Experiencia</td>
+                             <td>Junior</td>
+                            <td>15</td>
+                         </tr>
+                         <tr>
+                             <td>Nivel de Experiencia</td>
+                             <td>Mid-level</td>
+                             <td>20</td>
+                         </tr>
+                         <tr>
+                            <td>Nivel de Experiencia</td>
+                            <td>Senior</td>
+                            <td>15</td>
+                         </tr>
+                            <tr>
+                            <td>Tipo de Proyecto(Promedio)</td>
+                            <td>Web</td>
+                             <td>20</td>
+                         </tr>
+                            <tr>
+                            <td>Tipo de Proyecto(Promedio)</td>
+                            <td>Móvil</td>
+                             <td>10</td>
+                        </tr>
+                           <tr>
+                            <td>Tipo de Proyecto(Promedio)</td>
+                            <td>Escritorio</td>
+                            <td>10</td>
+                        </tr>
+                           <tr>
+                           <td>Personalización del IDE (Promedio)</td>
+                             <td>(4)</td>
+                            <td>50</td>
+                         </tr>
+                            <tr>
+                             <td>Herramientas de depuración(Facil de usar)</td>
+                            <td>Sí</td>
+                             <td>30</td>
+                         </tr>
+                           <tr>
+                            <td>Herramientas de depuración(Facil de usar)</td>
+                            <td>No</td>
+                             <td>20</td>
+                         </tr>
+                         <tr>
+                             <td>Problemas con la velocidad</td>
+                            <td>Sí</td>
+                             <td>35</td>
+                         </tr>
+                           <tr>
+                           <td>Problemas con la velocidad</td>
+                            <td>No</td>
+                             <td>15</td>
+                         </tr>
+                    </tbody>
+                </table>
+             </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Presentado por: Maximo Gonzalez</p>
+    </footer>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+             function animateSections() {
+                const sections = document.querySelectorAll('section');
+                sections.forEach((section, index) => {
+                    section.style.opacity = '0';
+                    section.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        section.style.transition = 'opacity 0.8s ease-in-out, transform 0.8s ease-in-out';
+                        section.style.opacity = '1';
+                        section.style.transform = 'translateY(0)';
+                    }, 100 * (index + 1));
+                });
+            }
+              animateSections();
+            //efecto de rotacion 3d en las tablas
+             function rotateTables() {
+               const tables = document.querySelectorAll('table');
+               tables.forEach((table, index) => {
+               table.addEventListener('mouseenter', () => {
+                table.style.transition = 'transform 0.5s ease-in-out';
+                 table.style.transform = 'rotateY(10deg)';
+               });
+        
+             table.addEventListener('mouseleave', () => {
+                  table.style.transition = 'transform 0.5s ease-in-out';
+                table.style.transform = 'rotateY(0deg)';
+                 });
+             });
+           }
+           rotateTables();
+        });
+        
+            </script>
+</body>
+</html>
